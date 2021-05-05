@@ -34,6 +34,25 @@ header-includes:
 \clearpage
 
 # Section 1
+```{r}
+library(tidyverse)
+library(ggplot2)
+```
+
+
+```{r}
+data <- read.csv(file = "Data_Tables_Criminal_Incidents_Visualisation_Year_Ending_December_2019.csv")
+
+newdata <- rename(data, Year = ï..Year, Population_rate = Rate.per.100.000.population )
+
+crime <- newdata %>% filter(Offence.Division == "A Crimes against the person")
+
+```
+
+```{r}
+ggplot(crime, aes(x= Year, y = Population_rate ))+
+  geom_line()
+```
 
 
 \clearpage
