@@ -40,6 +40,23 @@ header-includes:
 
 # Section 2
 
+```{r}
+library(tidyverse)
+```
+
+```{r}
+crime <- read_csv("Data_Tables_Criminal_Incidents_Visualisation_Year_Ending_December_2019.csv")
+```
+
+```{r}
+crime_against_the_person <- crime %>% 
+  filter(`Offence Division`=="A Crimes against the person")
+
+crime_against_the_person %>% 
+  ggplot(aes(x=Year, y=`Incidents Recorded`))+
+  geom_smooth()+
+  facet_wrap(~`Offence Subdivision`, scale = "free_y")
+```
 
 \clearpage
 
