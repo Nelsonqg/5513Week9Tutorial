@@ -84,15 +84,18 @@ crime_against_the_person %>%
 ```{r}
 library(tidyverse)
 library(readr)
+library(ggplot2)
 
 
 data <- read_csv("Data_Tables_Criminal_Incidents_Visualisation_Year_Ending_December_2019.csv")
 
-data %>% select(`Year`,`Offence Division`, `Incidents Recorded`) %>% 
-        filter(`Offence Division` == "E Justice procedures offences") 
-ggplot(data = data, aes(x = data$`Incidents Recorded` 
-                        y = data$`Offence Division`)) +
-  geom_line()
+data %>% filter(`Offence Division` == "E Justice procedures offences")
+
+data %>% ggplot() +
+geom_col(aes(x = Year, 
+                y = `Incidents Recorded`))
+  
+            
 
 ```
 
