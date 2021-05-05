@@ -45,6 +45,22 @@ header-includes:
 
 # Section 3
 
+```{r}
+library(tidyverse)
+library(readr)
+
+
+data <- read_csv("Data_Tables_Criminal_Incidents_Visualisation_Year_Ending_December_2019.csv")
+
+data %>% select(`Year`,`Offence Division`, `Incidents Recorded`) %>% 
+        filter(`Offence Division` == "E Justice procedures offences") 
+ggplot(data = data, aes(x = data$`Incidents Recorded` 
+                        y = data$`Offence Division`)) +
+  geom_line()
+
+```
+
+
 
 \clearpage
 
